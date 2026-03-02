@@ -126,7 +126,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-50">
       {/* Top Banner - Tunisia Flag Colors */}
       <div className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white py-2 text-center text-sm font-medium animate-pulse">
-        <span>Bienvenue sur HanoutTN - Le plus grand marketplace de Tunisie !</span>
+        <span>Bienvenue sur HanoutTN - Le plus grand marketplace de Tunisie</span>
       </div>
 
       {/* Header */}
@@ -537,3 +537,4 @@ export default function HomePage() {
     </div>
   );
 }
+
