@@ -38,12 +38,18 @@ export async function uploadImage(
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
     const filePath = folder ? `${folder}/${fileName}` : fileName;
 
+    console.log('Uploading image to bucket:', BUCKET_NAME);
+    console.log('File path:', filePath);
+    console.log('File type:', file.type);
+    console.log('File size:', file.size);
+
     // Upload file to Supabase Storage
     const { data, error } = await supabase.storage
       .from(BUCKET_NAME)
       .upload(filePath, file, {
         cacheControl: '3600',
         upsert: false,
+        contentType: file.type,
       });
 
     if (error) {
@@ -51,10 +57,14 @@ export async function uploadImage(
       return { url: null, error: error as Error };
     }
 
+    console.log('Upload successful:', data);
+
     // Get public URL
     const { data: urlData } = supabase.storage
       .from(BUCKET_NAME)
       .getPublicUrl(filePath);
+
+    console.log('Public URL:', urlData.publicUrl);
 
     return { url: urlData.publicUrl, error: null };
   } catch (error) {

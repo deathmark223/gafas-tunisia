@@ -15,10 +15,15 @@ import {
   Edit,
   Plus,
   Package,
-  Loader2
+  Loader2,
+  Trash2,
+  Eye,
+  Star,
+  MessageCircle,
+  WhatsApp
 } from 'lucide-react';
 import { supabase, getCurrentUser } from '@/lib/supabase/client';
-import { getListingsBySeller } from '@/lib/api/listings';
+import { getListingsBySeller, deleteListing } from '@/lib/api/listings';
 import type { Profile, Listing } from '@/types';
 
 export default function ProfilePage() {
@@ -71,6 +76,28 @@ export default function ProfilePage() {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     router.push('/');
+  };
+
+  // Delete a listing
+  const handleDeleteListing = async (listingId: string) => {
+    if (!confirm('Are you sure you want to delete this listing? This action cannot be undone.')) {
+      return;
+    }
+    
+    try {
+      const { success, error } = await deleteListing(listingId);
+      if (error) {
+        alert('Failed to delete listing: ' + error.message);
+        return;
+      }
+      
+      // Remove from local state
+      setListings(listings.filter(l => l.id !== listingId));
+      alert('Listing deleted successfully!');
+    } catch (err) {
+      console.error('Delete error:', err);
+      alert('Failed to delete listing');
+    }
   };
 
   if (isLoading) {
@@ -225,20 +252,29 @@ export default function ProfilePage() {
                     </div>
                     <div className="p-4">
                       <h3 className="font-semibold text-slate-900 mb-1">{listing.title}</h3>
-                      <p className="text-xl font-bold text-yellow-600">${listing.price}</p>
+                      <p className="text-xl font-bold text-yellow-600">{listing.price} {listing.currency || 'TND'}</p>
                       <div className="flex gap-2 mt-4">
                         <Link
                           href={`/listings/${listing.id}`}
-                          className="flex-1 text-center py-2 border border-gray-200 rounded-lg hover:border-yellow-500 hover:text-yellow-600 transition-colors"
+                          className="flex-1 text-center py-2 border border-gray-200 rounded-lg hover:border-yellow-500 hover:text-yellow-600 transition-colors flex items-center justify-center gap-1"
                         >
+                          <Eye className="w-4 h-4" />
                           View
                         </Link>
                         <Link
                           href={`/listings/${listing.id}/edit`}
-                          className="flex-1 text-center py-2 border border-gray-200 rounded-lg hover:border-yellow-500 hover:text-yellow-600 transition-colors"
+                          className="flex-1 text-center py-2 border border-gray-200 rounded-lg hover:border-yellow-500 hover:text-yellow-600 transition-colors flex items-center justify-center gap-1"
                         >
+                          <Edit className="w-4 h-4" />
                           Edit
                         </Link>
+                        <button
+                          onClick={() => handleDeleteListing(listing.id)}
+                          className="px-3 py-2 border border-red-200 text-red-500 rounded-lg hover:bg-red-50 hover:border-red-500 transition-colors"
+                          title="Delete listing"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                       </div>
                     </div>
                   </div>

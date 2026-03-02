@@ -92,6 +92,7 @@ export interface ListingWithSeller extends Listing {
   seller_username: string | null;
   seller_full_name: string | null;
   seller_avatar: string | null;
+  seller_phone: string | null;  // NEW: For WhatsApp contact
   category_name: string | null;
   category_slug: string | null;
   distance_meters: number | null;
@@ -185,6 +186,7 @@ export interface RestaurantWithOwner extends Restaurant {
   owner_username: string | null;
   owner_full_name: string | null;
   owner_avatar: string | null;
+  owner_phone: string | null;  // NEW: For WhatsApp contact
   category_name: string | null;
   category_slug: string | null;
   distance_meters: number | null;
