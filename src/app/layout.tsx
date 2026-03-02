@@ -10,10 +10,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Gafas Tunisia - Local Marketplace in Gafsa',
-  description: 'Buy and sell items in Gafsa, Tunisia. Find sunglasses, electronics, vehicles, and more. Local marketplace for Gafsa residents.',
-  keywords: ['gafas', 'tunisia', 'marketplace', 'buy', 'sell', 'sunglasses', 'local'],
-  authors: [{ name: 'Gafas Tunisia' }],
+  title: 'HanoutTN - Votre Marketplace en Ligne en Tunisie',
+  description: 'Achète et vendez des produits en Tunisie. Electronique, véhicules, immobilier, vêtements et plus. Le plus grand marketplace local de Gafsa et toute la Tunisie.',
+  keywords: ['tunisie', 'hanout', 'marketplace', 'acheter', 'vendre', 'gafas', 'electronique', 'voitures'],
+  authors: [{ name: 'HanoutTN' }],
 };
 
 export default function RootLayout({

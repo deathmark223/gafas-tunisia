@@ -17,6 +17,29 @@ import type {
 import { uploadMultipleImages } from '@/lib/supabase/storage';
 
 /**
+ * Parse PostGIS point string to extract lat/lng
+ * Handles formats: "POINT(lng lat)" or { lat, lng } object
+ */
+function parsePostGISPoint(location: string): { lat: number; lng: number } {
+  // If it's already an object
+  if (typeof location === 'object') {
+    return location as { lat: number; lng: number };
+  }
+  
+  // Parse POINT(lng lat) format
+  const match = location.match(/POINT\s*\(\s*([\d.-]+)\s+([\d.-]+)\s*\)/i);
+  if (match) {
+    return {
+      lng: parseFloat(match[1]),
+      lat: parseFloat(match[2])
+    };
+  }
+  
+  // Default to Gafsa, Tunisia if parsing fails
+  return { lat: 34.4251, lng: 9.4697 };
+}
+
+/**
  * Fetch all active listings with optional filters
  * 
  * @param filters - Optional filters for the listings
