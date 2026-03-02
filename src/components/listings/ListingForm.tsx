@@ -38,7 +38,7 @@ export default function ListingForm({ userId, onSuccess }: ListingFormProps) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [currency, setCurrency] = useState('USD');
+  const [currency, setCurrency] = useState('TND');
   const [condition, setCondition] = useState<ListingCondition>('good');
   const [categoryId, setCategoryId] = useState<number | null>(null);
   const [images, setImages] = useState<File[]>([]);
@@ -145,8 +145,11 @@ export default function ListingForm({ userId, onSuccess }: ListingFormProps) {
     }
   };
 
-  // Open location picker
+  // Open location picker - Default to Gafsa, Tunisia
   const handleOpenLocationPicker = () => {
+    // Default to Gafsa, Tunisia coordinates
+    const gafsaCoords = { lat: 34.4251, lng: 9.4697 };
+    
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -158,9 +161,15 @@ export default function ListingForm({ userId, onSuccess }: ListingFormProps) {
         },
         (err) => {
           console.error('Geolocation error:', err);
-          setError('Could not get your location. Please enter address manually.');
+          // Fall back to Gafsa, Tunisia
+          setLocation(gafsaCoords);
+          setAddress('Gafsa, Tunisia');
         }
       );
+    } else {
+      // Fall back to Gafsa, Tunisia
+      setLocation(gafsaCoords);
+      setAddress('Gafsa, Tunisia');
     }
   };
 
@@ -256,10 +265,10 @@ export default function ListingForm({ userId, onSuccess }: ListingFormProps) {
             onChange={(e) => setCurrency(e.target.value)}
             className="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-100 border-0 rounded py-1 px-2 text-sm"
           >
+            <option value="TND">TND (د.ت)</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
-            <option value="JPY">JPY</option>
           </select>
         </div>
       </div>
@@ -340,7 +349,7 @@ export default function ListingForm({ userId, onSuccess }: ListingFormProps) {
               id="address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              placeholder="Enter your address or use current location"
+              placeholder="Gafsa, Tunisia - Enter your address"
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>

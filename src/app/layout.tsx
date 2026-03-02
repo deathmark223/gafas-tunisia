@@ -10,10 +10,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'HyperLocal Marketplace - Buy & Sell Locally',
-  description: 'A hyper-local marketplace for buying and selling items, and discovering local restaurants near you.',
-  keywords: ['marketplace', 'local', 'buy', 'sell', 'restaurants', 'near me'],
-  authors: [{ name: 'HyperLocal Team' }],
+  title: 'Gafas Tunisia - Local Marketplace in Gafsa',
+  description: 'Buy and sell items in Gafsa, Tunisia. Find sunglasses, electronics, vehicles, and more. Local marketplace for Gafsa residents.',
+  keywords: ['gafas', 'tunisia', 'marketplace', 'buy', 'sell', 'sunglasses', 'local'],
+  authors: [{ name: 'Gafas Tunisia' }],
 };
 
 export default function RootLayout({
