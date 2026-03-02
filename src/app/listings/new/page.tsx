@@ -10,7 +10,7 @@ function ListingFormContent() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Vendre un article</h1>
         <p className="text-gray-600 mt-2">
-          Créez votre annonce en quelques minutes. Tout le monde à Gafsa peut voir votre article!
+          Créez votre annonce en quelques minutes. Tout le monde en Tunisie peut voir votre article!
         </p>
       </div>
       
