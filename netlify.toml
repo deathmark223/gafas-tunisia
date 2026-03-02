@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+  environment = { NEXT_TELEMETRY_DISABLED = "1" }
+
+[functions]
+  node_bundler = "esbuild"
+
+[settings]
+  python_version = "3.11"
