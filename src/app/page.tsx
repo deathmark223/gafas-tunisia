@@ -100,13 +100,12 @@ export default function HomePage() {
     setIsLoading(false);
   };
 
-  // Tunisia-themed categories
   const categories = [
     { name: 'Electronics', slug: 'electronics-phones', icon: Laptop, color: 'bg-blue-500', count: 1250 },
     { name: 'Vehicles', slug: 'vehicles', icon: Car, color: 'bg-green-500', count: 890 },
     { name: 'Real Estate', slug: 'real-estate', icon: Home, color: 'bg-amber-500', count: 567 },
     { name: 'Fashion', slug: 'fashion-clothing', icon: Shirt, color: 'bg-pink-500', count: 2340 },
-    { name: 'Home & Furniture', slug: 'home-furniture', icon: Sofa, color: 'bg-brown-500', count: 780 },
+    { name: 'Home & Furniture', slug: 'home-furniture', icon: Sofa, color: 'bg-orange-500', count: 780 },
     { name: 'Sports', slug: 'sports-leisure', icon: Dumbbell, color: 'bg-purple-500', count: 450 },
     { name: 'Jobs', slug: 'jobs', icon: Briefcase, color: 'bg-indigo-500', count: 320 },
     { name: 'Beauty', slug: 'beauty', icon: Gem, color: 'bg-rose-500', count: 670 },
@@ -114,7 +113,6 @@ export default function HomePage() {
     { name: 'Watches', slug: 'watches-jewelry', icon: Watch, color: 'bg-cyan-500', count: 290 },
   ];
 
-  // Featured deals
   const deals = [
     { id: 1, title: 'Smartphone Samsung', price: 599, oldPrice: 799, discount: 25, location: 'Tunis' },
     { id: 2, title: 'Toyota Corolla 2020', price: 24000, oldPrice: 28000, discount: 14, location: 'Sfax' },
@@ -124,16 +122,13 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Top Banner - Tunisia Flag Colors */}
       <div className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white py-2 text-center text-sm font-medium animate-pulse">
-        <span>Bienvenue sur HanoutTN - Le plus grand marketplace de Tunisie</span>
+       Bienvenue sur HanoutTN - Le plus grand marketplace de Tunisie
       </div>
 
-      {/* Header */}
       <header className="bg-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between gap-4">
-            {/* Logo */}
             <Link href="/" className="flex items-center gap-2 shrink-0">
               <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-xl">H</span>
@@ -144,7 +139,6 @@ export default function HomePage() {
               </div>
             </Link>
 
-            {/* Search Bar */}
             <div className="flex-1 max-w-2xl relative" ref={searchRef}>
               <div className="flex">
                 <div className="relative flex-1">
@@ -166,7 +160,6 @@ export default function HomePage() {
                 </button>
               </div>
               
-              {/* Search Results Dropdown */}
               {showSearch && searchResults.length > 0 && (
                 <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border overflow-hidden z-50">
                   {searchResults.map((result) => (
@@ -189,7 +182,6 @@ export default function HomePage() {
               )}
             </div>
 
-            {/* Actions */}
             <div className="flex items-center gap-3">
               <Link href="/cart" className="relative p-2 hover:bg-gray-100 rounded-xl transition-colors">
                 <ShoppingBag className="w-6 h-6 text-gray-700" />
@@ -218,7 +210,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Navigation */}
           <nav className={`md:flex items-center gap-4 mt-4 pt-4 border-t ${mobileMenuOpen ? 'flex flex-col' : 'hidden'}`}>
             <Link href="/" className="text-red-600 font-semibold">Accueil</Link>
             <Link href="/marketplace" className="text-gray-700 hover:text-red-600 font-medium">Tous les produits</Link>
@@ -235,11 +226,10 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Categories Banner */}
       <div className="bg-white shadow-md py-4">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
-            <span className="text-gray-500 text-sm whitespace-nowrap">Catégories:</span>
+          <div className="flex items-center gap-2 overflow-x-auto pb-2">
+            <span className="text-gray-500 text-sm whitespace-nowrap">Categories:</span>
             {categories.map((cat) => (
               <Link
                 key={cat.slug}
@@ -254,7 +244,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1920')] bg-cover bg-center opacity-10"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-red-800/90 to-transparent"></div>
@@ -269,8 +258,8 @@ export default function HomePage() {
               <span className="text-yellow-300">en Toute Confiance</span>
             </h1>
             <p className="text-xl text-red-100 mb-8">
-              Des milliers de produits, véhicules et immobilier en Tunisie. 
-              Trouvez ce que vous cherchez près de chez vous à Gafsa et dans toute la Tunisie !
+              Des milliers de produits, vehicules et immobilier en Tunisie. 
+              Trouvez ce que vous cherchez pres de chez vous a Gafsa et dans toute la Tunisie.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/marketplace" className="bg-white text-red-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
@@ -284,7 +273,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Trust Badges */}
       <div className="bg-gray-900 text-white py-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -293,8 +281,8 @@ export default function HomePage() {
                 <Shield className="w-7 h-7" />
               </div>
               <div>
-                <p className="font-bold">Paiement Sécurisé</p>
-                <p className="text-sm text-gray-400">100% sécurisé</p>
+                <p className="font-bold">Paiement Securise</p>
+                <p className="text-sm text-gray-400">100% securise</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -303,10 +291,10 @@ export default function HomePage() {
               </div>
               <div>
                 <p className="font-bold">Livraison</p>
-                <p className="text-sm text-gray-400">Partout en Tunisie </div>
+                <p className="text-sm text-gray-400">Partout en Tunisie</p>
+              </div>
             </div>
-           </p>
-              <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center">
                 <Headphones className="w-7 h-7" />
               </div>
@@ -328,7 +316,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Deals Section */}
       <section className="py-12 bg-gradient-to-b from-red-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
@@ -378,12 +365,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900">Catégories Populaires</h2>
-            <p className="text-gray-500 mt-2">Parcourez par catégorie</p>
+            <h2 className="text-3xl font-bold text-gray-900">Categories Populaires</h2>
+            <p className="text-gray-500 mt-2">Parcourez par categorie</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -405,7 +391,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Products */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
@@ -414,8 +399,8 @@ export default function HomePage() {
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900">Nouveautés</h2>
-                <p className="text-gray-500">Les dernières annonces</p>
+                <h2 className="text-3xl font-bold text-gray-900">Nouveautes</h2>
+                <p className="text-gray-500">Les dernieres annonces</p>
               </div>
             </div>
             <Link href="/marketplace" className="flex items-center gap-2 text-red-600 font-semibold hover:underline">
@@ -469,32 +454,30 @@ export default function HomePage() {
               <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
               <p className="text-gray-500 text-lg">Aucun produit pour le moment</p>
               <Link href="/listings/new" className="inline-block mt-4 bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700">
-                Soyez le premier à vendre !
+                Soyez le premier a vendre
               </Link>
             </div>
           )}
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-red-600 to-red-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Commencez à vendre sur HanoutTN</h2>
+          <h2 className="text-4xl font-bold mb-4">Commencez a vendre sur HanoutTN</h2>
           <p className="text-xl text-red-100 mb-8">
-            Rejoignez des milliers de vendeurs en Tunisie. C'est gratuit et facile !
+            Rejoignez des milliers de vendeurs en Tunisie. C'est gratuit et facile
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/listings/new" className="bg-white text-red-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg">
-              Créer une annonce
+              Creer une annonce
             </Link>
             <Link href="/auth/signup" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">
-              Créer un compte
+              Creer un compte
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
@@ -523,9 +506,9 @@ export default function HomePage() {
             <div>
               <h4 className="text-white font-semibold mb-4">Contact</h4>
               <div className="space-y-2 text-sm">
-                <p>📍 Gafsa, Tunisie</p>
-                <p>📧 contact@hanouttn.tn</p>
-                <p>📞 +216 12 345 678</p>
+                <p>Gafsa, Tunisie</p>
+                <p>contact@hanouttn.tn</p>
+                <p>+216 12 345 678</p>
               </div>
             </div>
           </div>
@@ -537,4 +520,3 @@ export default function HomePage() {
     </div>
   );
 }
-
